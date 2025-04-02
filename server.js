@@ -7,14 +7,23 @@ const app = express();
 
 
 const server = http.createServer(app);
-const io = new Server(server, {
-    cors: {
-        origin: "https://chatwave-two.vercel.app",  
-        methods: ["GET", "POST"]
-    }
-});
 
-app.use(cors({ origin: "https://chatwave-two.vercel.app" }));
+app.use(cors({
+    origin: "https://chatwave-two.vercel.app",
+    methods: ["GET", "POST"],
+    credentials: true,
+  }));
+  
+  const io = new Server(server, {
+    cors: {
+      origin: "https://chatwave-two.vercel.app",
+      methods: ["GET", "POST"],
+      credentials: true,
+    },
+    transports: ["polling"], 
+    allowEIO3: true, 
+  });
+  
 
 let users = [];
 
