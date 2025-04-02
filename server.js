@@ -4,7 +4,7 @@ const { Server } = require("socket.io");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
+
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -13,6 +13,8 @@ const io = new Server(server, {
         methods: ["GET", "POST"]
     }
 });
+
+app.use(cors({ origin: "https://chatwave-two.vercel.app/" }));
 
 let users = [];
 
