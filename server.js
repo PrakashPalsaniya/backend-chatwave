@@ -20,8 +20,8 @@ app.use(cors({
       methods: ["GET", "POST"],
       credentials: true,
     },
-    transports: ["polling"], 
-    allowEIO3: true, 
+    transports: ["websocket"], // ✅ Force WebSocket only
+    allowEIO3: true, // ✅ Allow older socket.io versions
   });
   
 
